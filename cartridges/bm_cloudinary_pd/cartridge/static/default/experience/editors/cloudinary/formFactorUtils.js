@@ -95,6 +95,12 @@ var CldFormFactorUtils = (function () {
         bindEvents();
     }
 
+    if (window.ResizeObserver) {
+        new ResizeObserver(function () {
+            if (window.parentIFrame) window.parentIFrame.size();
+        }).observe(document.documentElement);
+    }
+
     return {
         FORM_FACTORS:     FORM_FACTORS,
         TAB_ORDER:        TAB_ORDER,
